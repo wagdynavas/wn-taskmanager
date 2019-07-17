@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TM - Tasks</title>
+    <link th:replace="/fragments/fragments :: bootstrap_css">
+</head>
+<body>
+    <div th:replace="/fragments/fragments :: header"></div>
+    <div class="container">
+        <h1>Tasks</h1>
+        <a href="/tasks/create" class="btn btn-success">Create new task</a>
+        <div th:each="task: ${tasks}" style="margin: 10px;">
+            <div class="card bg-light mb-3">
+                <div class="card-header" th:text="${task.title}"></div>
+                <div class="card-body">
+                    <p class="card-text" th:text="${task.description}"></p>
+                    <p class="card-text" th:text="${'Due Date ' + task.dueDate}"></p>
+                </div>
+                <div class="card-footer">
+                    <a th:href="@{/tasks/update/{id}(id=${task.id})}" class="btn btn-dark">Update</a><!-- Usamos @ para expressoes compostas -->
+                    <a th:href="@{/tasks/resolved/{id}(id=${task.id})}" class="btn btn-dark">Resolved</a>
+                    <a th:href="@{/tasks/delete/{id}(id=${task.id})}" class="btn btn-dark">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:replace="/fragments/fragments :: jquery"></script>
+    <script th:replace="/fragments/fragments :: bootstrap_js"></script>
+</body>
+</html>

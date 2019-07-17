@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TM - Create Task</title>
+    <link th:replace="/fragments/fragments :: bootstrap_css">
+</head>
+<body>
+    <div th:replace="/fragments/fragments :: header"></div>
+    <div class="container">
+        <h1>Create new task</h1>
+        <form class="form-horizontal" action="/tasks/create" method="post" th:object="${task}">
+
+            <input type="hidden" th:field="*{id}">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('title')}">
+                        <label th:errors="*{title}"></label>
+                    </div>
+                    <label for="title">Title</label>
+                    <input type="text" id="title"   class="form-control" th:field="*{title}"> <!-- esse * e pq o objeto task ja foi declarado em th:object-->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="description">Description</label>
+                    <textarea  id="description"  maxlength="500" class="form-control" th:field="*{description}"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label for="dueDate">Due Date</label>
+                    <input type="date"  id="dueDate"  th:attr="min=${todayDate}" class="form-control" th:field="*{dueDate}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+    <script th:replace="/fragments/fragments :: jquery"></script>
+    <script th:replace="/fragments/fragments :: bootstrap_js"></script>
+
+</body>
+</html>

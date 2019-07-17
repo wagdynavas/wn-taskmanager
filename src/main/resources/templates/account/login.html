@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TM-Login</title>
+    <link th:replace="/fragments/fragments :: bootstrap_css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">TASK MANAGER</a>
+    </nav>
+    <div class="container">
+        <h1>Login</h1>
+        <div class="card card-container">
+            <form  action="/login" method="post" class="form-signin">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="email" id="email" name="email" placeholder="Email" class="form-control"> <!-- esse * e pq o objeto task ja foi declarado em th:object-->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="password" id="password" name="password" placeholder="Password" class="form-control" > <!-- esse * e pq o objeto task ja foi declarado em th:object-->
+                    </div>
+                </div>
+                <div class="form-group">
+                     <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <div class="alert alert-danger" role="alert" th:if="${param.error}">
+                            Error trying to login.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span>You don't have an account?<a href="/registration">Register here</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script th:replace="/fragments/fragments :: jquery"></script>
+    <script th:replace="/fragments/fragments :: bootstrap_js"></script>
+</body>
+</html>
