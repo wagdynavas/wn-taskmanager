@@ -27,7 +27,7 @@ public class TaskController {
         String userEmail = request.getUserPrincipal().getName();
         ModelAndView view = new ModelAndView();
         view.setViewName("tasks/list");
-        view.addObject("tasks", taskService.getTasksByUser(userEmail));
+        view.addObject("tasks", taskService.getAllOpenTasksByUser(userEmail));
         return view;
     }
 

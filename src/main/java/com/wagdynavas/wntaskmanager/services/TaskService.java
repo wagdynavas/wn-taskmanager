@@ -32,15 +32,20 @@ public class TaskService {
         return taskRepository.findTasksByUsername(email);
     }
 
+    public List<Task> getAllOpenTasksByUser(String email) {
+        return taskRepository.findAllOpenTasksByUsername(email);
+    }
+
+
 
     public ModelAndView getById(Long id) {
         ModelAndView view = new ModelAndView();
         Optional<Task> optionalTask = taskRepository.findById(id);
-        if(optionalTask.isPresent()) {
+        if (optionalTask.isPresent()) {
             Task task = optionalTask.get();
             view.setViewName("tasks/create");
             view.addObject("task", task);
-        }else {
+        } else {
             view.setViewName("tasks/error");
         }
         return view;
@@ -48,10 +53,10 @@ public class TaskService {
 
     public ModelAndView createTask(Task task, BindingResult result, String userEmail) {
         ModelAndView view = new ModelAndView();
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             view.setViewName("tasks/create");
             view.addObject(task);
-        }else {
+        } else {
             User logedUser = userService.getByEmail(userEmail) ;
             task.setUser(logedUser);
             taskRepository.save(task);
