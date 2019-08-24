@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>TM - Tasks</title>
@@ -18,7 +18,7 @@
                     <p class="card-text" th:text="${'Due Date ' + task.dueDate}"></p>
                 </div>
                 <div class="card-footer">
-                    <a th:href="@{/tasks/update/{id}(id=${task.id})}" class="btn btn-dark">Update</a><!-- Usamos @ para expressoes compostas -->
+                    <a th:href="@{/tasks/update/{id}(id=${task.id})}" class="btn btn-dark">Edit</a><!-- Usamos @ para expressoes compostas -->
                     <a th:href="@{/tasks/resolved/{id}(id=${task.id})}" class="btn btn-dark">Resolved</a>
                     <a th:href="@{/tasks/delete/{id}(id=${task.id})}" class="btn btn-dark">Delete</a>
                 </div>
