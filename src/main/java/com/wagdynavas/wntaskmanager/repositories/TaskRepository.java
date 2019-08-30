@@ -20,6 +20,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("select t from Task t where t.user.email = :email")
     List<Task> findTasksByUsername(@Param("email") String email);
 
-    @Query("select t from Task t where t.user.email = :email and t.done = false")
+    @Query("select t from Task t where t.user.email = :email and t.done = false order by t.dueDate")
     List<Task> findAllOpenTasksByUsername(@Param("email") String username);
 }

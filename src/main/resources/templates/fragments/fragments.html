@@ -14,12 +14,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar-app">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link" href="/tasks/list">Tasks</a>
-                <a class="nav-item nav-link" href="/logout">Logout</a>
+                <div class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </div>
+
+                <div class="nav-item">
+                    <a class="nav-link" href="/tasks/list">Tasks</a>
+                </div>
+
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
+
+
+
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50 navbar fixed-bottom" th:fragment="footer">
+            Copyright &copy; Wagdy Navas
+    </footer>
 
     <script src="/webjars/jquery/3.4.1/jquery.min.js" th:fragment="jquery"></script>
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js" th:fragment="bootstrap_js"></script>
